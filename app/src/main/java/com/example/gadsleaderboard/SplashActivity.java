@@ -1,26 +1,27 @@
 package com.example.gadsleaderboard;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class SplashActivity extends Activity {
-    Handler handler;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.splashsfile);
+import com.example.gadsleaderboard.MainActivity;
 
-        handler=new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashActivity.this,MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        },3000);
+public class SplashActivity extends AppCompatActivity {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new Handler()
+                .postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                    }
+                }, 2000);
     }
 
+    @Override
+    public void onBackPressed() { // Disable back navigation
+    }
 }
